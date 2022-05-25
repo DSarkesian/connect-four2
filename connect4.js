@@ -18,9 +18,9 @@ const board = []; // array of rows, each row is array of cells  (board[y][x])
  */
 
 function makeBoard() {
- 
-  for(let i=0; i<HEIGHT; i++){
-    for(let j=0; j<WIDTH; j++){
+
+  for (let i = 0; i < HEIGHT; i++) {
+    for (let j = 0; j < WIDTH; j++) {
       board[i].push(null);
     }
   }
@@ -29,14 +29,17 @@ function makeBoard() {
 /** makeHtmlBoard: make HTML table and row of column tops. */
 
 function makeHtmlBoard() {
-  // TODO: get "htmlBoard" variable from the item in HTML w/ID of "board"
+  //  get "htmlBoard" variable from the item in HTML w/ID of "board"
+  const htmlBoard = document.getElementById("board");
 
-  // TODO: add comment for this code
+
+  //  Creates top table row and sets id to column-top, adds eventlistener to row
   const top = document.createElement("tr");
   top.setAttribute("id", "column-top");
   top.addEventListener("click", handleClick);
 
-  // TODO: add comment for this code
+  // creates a cell for each column with id of column number then places
+  //them in top row
   for (let x = 0; x < WIDTH; x++) {
     let headCell = document.createElement("td");
     headCell.setAttribute("id", x);
@@ -48,18 +51,24 @@ function makeHtmlBoard() {
   // uses HEIGHT to create table rows
   // uses WIDTH to create table cells for each row
   for (let y = 0; y < HEIGHT; y++) {
-    // TODO: Create a table row element and assign to a "row" variable
+    //  Create a table row element and assign to a "row" variable
+    let row = document.createElement("tr");
+
 
     for (let x = 0; x < WIDTH; x++) {
-      // TODO: Create a table cell element and assign to a "cell" variable
+      //  Create a table cell element and assign to a "cell" variable
+      let cell = document.createElement("td");
 
-      // TODO: add an id, y-x, to the above table cell element
+      //  add an id, y-x, to the above table cell element
       // you'll use this later, so make sure you use y-x
+      cell.setAttribute("id", `${y}-${x}`);
 
-      // TODO: append the table cell to the table row
+      //  append the table cell to the table row
+      row.append(cell);
 
     }
     // TODO: append the row to the html board
+    htmlBoard.append(row);
 
   }
 }
@@ -115,7 +124,7 @@ function handleClick(evt) {
 
 function checkForWin() {
 
-  /** 
+  /**
    * --------------Is this current style to have a function within a function?
    * _win:
    * takes input array of 4 cell coordinates [ [y, x], [y, x], [y, x], [y, x] ]
