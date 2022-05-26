@@ -69,7 +69,7 @@ function makeHtmlBoard() {
       row.append(cell);
 
     }
-    // TODO: append the row to the html board
+    // append the row to the html board
     htmlBoard.append(row);
 
   }
@@ -86,6 +86,13 @@ function findSpotForCol(x) {
 
 function placeInTable(y, x) {
   // TODO: make a div and insert into correct table cell
+  const divPiece = document.createElement("div");
+  divPiece.classList.add("piece", `P${currPlayer}`);
+
+  const tableCell = document.getElementById(`${y}-${x}`);
+
+  tableCell.append(divPiece);
+
 }
 
 /** endGame: announce game end */
