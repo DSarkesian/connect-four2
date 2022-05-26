@@ -19,9 +19,9 @@ const board = []; // array of rows, each row is array of cells  (board[y][x])
 
 function makeBoard() {
 
-  for (let i = 0; i < HEIGHT; i++) {
+  for (let y = 0; y < HEIGHT; y++) {
     let row =[];
-    for (let j = 0; j < WIDTH; j++) {
+    for (let x = 0; x < WIDTH; x++) {
       row.push(null);
     }
     board.push(row);
