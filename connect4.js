@@ -20,7 +20,7 @@ const board = []; // array of rows, each row is array of cells  (board[y][x])
 function makeBoard() {
 
   for (let y = 0; y < HEIGHT; y++) {
-    let row =[];
+    let row = [];
     for (let x = 0; x < WIDTH; x++) {
       row.push(null);
     }
@@ -105,7 +105,8 @@ function endGame(msg) {
 
 function handleClick(evt) {
   // get x from ID of clicked cell
-  let x = +evt.target.id; //Should this get updated to "Number()"?
+  let x = +evt.target.id;
+
 
   // get next spot in column (if none, ignore click)
   let y = findSpotForCol(x);
@@ -124,9 +125,19 @@ function handleClick(evt) {
 
   // check for tie
   // TODO: check if all cells in board are filled; if so call, call endGame
+  //check for any null values. if null leave loop
+  for(let row of board){
+    if (row.every( n=> n!==null)){
+      endGame()
+    }
+
+  }
 
   // switch players
-  // TODO: switch currPlayer 1 <-> 2
+  // switch currPlayer 1 <-> 2
+  currPlayer = (currPlayer === 1 ? 2 : 1);
+
+
 }
 
 /** checkForWin: check board cell-by-cell for "does a win start here?" */
